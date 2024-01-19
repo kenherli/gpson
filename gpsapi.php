@@ -1,4 +1,4 @@
-		<?php
+<?php
 	header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Credentials: true');
     header("Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS");
@@ -166,7 +166,6 @@
 		else
 			$link->query("UPDATE `users_roles` SET `user_role`='admin' WHERE `company_id`='$company_id' AND `user_id`='$this_user_id';"); 		
 		
-		//die("SELECT `id`,`name`,`balance`,`currency` FROM `companies` WHERE `id`='$company_id'");
 		$res = ExecSQL($link,"SELECT `id`,`name`,`balance`,`currency` FROM `companies` WHERE `id`='$company_id'");
 		exit_ok_with_log (json_encode(['status'=>'Ok', 'message'=>'Added', 'companies'=>$res])); 
 	}
@@ -415,6 +414,11 @@
 	}
 	
 	if ($method=='new_password')
+	{
+		die_with_log(json_encode(['status'=>'error', 'message'=>'Метод в разработке.']));
+		
+	}
+	if ($method=='user_registration')
 	{
 		die_with_log(json_encode(['status'=>'error', 'message'=>'Метод в разработке.']));
 		
